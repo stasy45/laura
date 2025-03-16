@@ -15,12 +15,17 @@ export class MenuScene extends Scene {
   }
 
   create() {
-    this.add.image(0, 0, 'background');
+    const background = this.add.sprite(0, 0, 'menu-background');
+    background.setOrigin(0);
 
-    this.add.text(this.centerX, this.centerY - 100, 'Laura', {
-      fontSize: '64px',
-      color: '#ffffff'
-    }).setOrigin(0.5, 0.5);
+    this.anims.create({
+      key: 'menu-background-anim',
+      frames: this.anims.generateFrameNumbers('menu-background', { start: 0, end: 1 }),
+      frameRate: 2,
+      repeat: -1 // бесконечная анимация
+    });
+
+    background.anims.play('menu-background-anim');
 
     new Button(this, this.centerX, this.centerY, 'Старт', () => {
       this.tweens.add({

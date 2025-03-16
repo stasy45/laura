@@ -6,7 +6,10 @@ export class BootScene extends Scene {
   }
 
   preload() {
-    this.load.image('background', 'assets/background.png');
+    this.load.spritesheet('menu-background', 'images/menu-background.png', {
+      frameWidth: 1280, // Ширина одного кадра
+      frameHeight: 720 // Высота одного кадра
+    });
   }
 
   create() {
