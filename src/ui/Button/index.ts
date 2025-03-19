@@ -1,26 +1,22 @@
 import { Scene } from 'phaser';
 
-export class Button extends Phaser.GameObjects.Text {
+export class Button extends Phaser.GameObjects.BitmapText {
   private onClickCallback: () => void;
 
-  constructor(scene: Scene, x: number, y: number, text: string, callback: () => void) {
-    super(scene, x, y, text, {
-      fontSize: '32px',
-      color: '#ffffff',
-      backgroundColor: '#000',
-      padding: {
-        x: 16,
-        y: 16
-      },
-      align: 'center'
-    });
+  constructor(scene: Scene, x: number, y: number, text: string, callback: () => void, width: number = 150, height: number = 50) {
+    super(scene, x, y, 'bitmap', text, 32); 
 
     this.onClickCallback = callback;
     this.setInteractive();
     this.on('pointerdown', () => this.onClickCallback());
-    this.on('pointerover', () => this.setColor('#2E8B57'));
-    this.on('pointerout', () => this.setColor('#ffffff'));
+    this.on('pointerover', () => {
+      this.setTint(0x2E8B57); // Изменение цвета при наведении
+    });
+    this.on('pointerout', () => {
+      this.clearTint(); // Сброс цвета при уходе
+    });
 
+    scene.add.rectangle(x, y, width, height, 0x000000).setOrigin(0.5);
     scene.add.existing(this);
   }
 }

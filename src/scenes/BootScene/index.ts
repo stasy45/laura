@@ -10,10 +10,11 @@ export class BootScene extends Scene {
       frameWidth: 1280, // Ширина одного кадра
       frameHeight: 720 // Высота одного кадра
     });
+
+    this.load.bitmapFont('bitmap', '/fonts/Tiny5.png', '/fonts/Tiny5.xml');
   }
 
   create() {
-    // В методе create или update сцены
     this.tweens.add({
       targets: this.cameras.main,
       alpha: 0,

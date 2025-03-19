@@ -36,6 +36,6 @@ export class MenuScene extends Scene {
           this.scene.start('GameScene');
         }
       });
-    }).setOrigin(0.5, 0.5);
+    }).setOrigin(0.5);
   }
 }
